@@ -16,13 +16,11 @@
             --muted: #a9b8cb;
             --cyan: #00e5ff;
             --magenta: #ff36b7;
-            --paper: #f0dfb8;
-            --ink: #34291e;
         }
         * { box-sizing: border-box; }
         body {
-            font-family: Georgia, "Times New Roman", serif;
-            background: radial-gradient(ellipse at top, #263753 0%, var(--background) 68%);
+            font-family: Arial, sans-serif;
+            background: radial-gradient(ellipse at top, #1d2b45 0%, var(--background) 65%);
             color: var(--text);
             min-height: 100vh;
             margin: 0;
@@ -31,11 +29,12 @@
         main { width: min(1050px, 100%); margin: 0 auto; }
         .eyebrow {
             color: var(--cyan);
-            font: bold .8rem Arial, sans-serif;
+            font-size: .8rem;
+            font-weight: bold;
             letter-spacing: .16em;
             text-transform: uppercase;
         }
-        h1 { margin: .6rem 0 .75rem; font-size: clamp(2rem, 5vw, 3.25rem); color: #fff; }
+        h1 { margin: .6rem 0 .75rem; font-size: clamp(2rem, 5vw, 3.25rem); }
         .intro { color: var(--muted); line-height: 1.7; max-width: 680px; margin-bottom: 2rem; }
         .games {
             display: grid;
@@ -52,23 +51,47 @@
             display: flex;
             flex-direction: column;
         }
+        /* Cyber Runner conserva el formato de manual, con acabado cyberpunk. */
         .game-card.cyber {
-            color: var(--ink);
-            background: repeating-linear-gradient(0deg, rgba(120, 85, 45, .025) 0, rgba(120, 85, 45, .025) 1px, transparent 1px, transparent 4px), var(--paper);
-            border: 5px double #785a35;
-            border-radius: 4px;
-            box-shadow: 7px 8px 0 rgba(0, 0, 0, .28);
+            color: var(--text);
+            background:
+                linear-gradient(rgba(0, 229, 255, .035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, .035) 1px, transparent 1px),
+                linear-gradient(145deg, #1b2035, #101522 75%);
+            background-size: 24px 24px, 24px 24px, auto;
+            border: 1px solid rgba(0, 229, 255, .65);
+            border-radius: 8px;
+            box-shadow: 0 0 0 3px rgba(255, 54, 183, .12), 0 0 28px rgba(0, 229, 255, .12), 7px 8px 0 rgba(0, 0, 0, .3);
+            position: relative;
+            overflow: hidden;
         }
-        .tag { color: var(--muted); font: bold .72rem Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
-        .cyber .tag { color: #785a35; }
+        .game-card.cyber::before {
+            content: "NEX-01 // FIELD MANUAL";
+            display: block;
+            margin: -.25rem -.25rem 1.15rem;
+            padding: .55rem .7rem;
+            color: var(--cyan);
+            background: rgba(0, 229, 255, .07);
+            border-left: 3px solid var(--magenta);
+            font: bold .68rem monospace;
+            letter-spacing: .16em;
+        }
+        .tag { color: var(--muted); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; }
+        .game-card.cyber .tag { color: var(--magenta); }
         h2 { margin: .65rem 0; color: #fff; }
-        .cyber h2 { color: #392818; font-size: clamp(1.5rem, 4vw, 2rem); }
+        .game-card.cyber h2 {
+            color: var(--cyan);
+            font-family: Arial, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            text-shadow: 0 0 16px rgba(0, 229, 255, .3);
+        }
         .game-card p { color: var(--muted); line-height: 1.65; margin: .45rem 0; }
-        .cyber p { color: #594832; }
+        .game-card.cyber p { color: #c1ccdc; }
         .details { margin: .75rem 0 1.25rem; padding-left: 1.2rem; color: var(--text); line-height: 1.7; }
         .details strong { color: #fff; }
-        .cyber .details { color: #493923; }
-        .cyber .details strong, .cyber strong { color: #392818; }
+        .game-card.cyber .details { color: #c1ccdc; }
+        .game-card.cyber .details strong,
+        .game-card.cyber > p strong { color: var(--cyan); }
         .btn-play {
             display: inline-block;
             align-self: flex-start;
@@ -78,24 +101,33 @@
             color: #101522;
             text-decoration: none;
             border-radius: 6px;
-            font: bold 1rem Arial, sans-serif;
-            transition: transform .2s, filter .2s;
+            font-weight: bold;
+            transition: transform .2s, filter .2s, box-shadow .2s;
         }
         .btn-play:hover, .btn-play:focus-visible { transform: translateY(-2px); filter: brightness(1.12); }
         .game-card:first-child .btn-play { background: #4caf50; color: white; }
-        .cyber .btn-play { color: #fff4dc; background: #70452b; border: 2px solid #482d1b; border-radius: 2px; }
-        .credits { border-top: 1px solid #b9a17a; padding-top: 1rem; margin-top: .5rem !important; font-size: .9rem; }
+        .game-card.cyber .btn-play {
+            color: #101522;
+            background: linear-gradient(100deg, var(--cyan), #8af7ff);
+            border: 1px solid var(--cyan);
+            border-radius: 3px;
+            box-shadow: 3px 3px 0 var(--magenta), 0 0 16px rgba(0, 229, 255, .2);
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+        .credits { border-top: 1px solid #34445e; padding-top: 1rem; margin-top: .5rem !important; font-size: .9rem; }
+        .game-card.cyber .credits { border-color: rgba(0, 229, 255, .35); }
         .manual-heading {
             display: flex;
             align-items: center;
             gap: .65rem;
             margin: 1.25rem 0 .75rem;
-            color: #70452b;
-            font: bold .75rem Arial, sans-serif;
+            color: var(--cyan);
+            font: bold .75rem monospace;
             letter-spacing: .14em;
             text-transform: uppercase;
         }
-        .manual-heading::after { content: ""; height: 1px; flex: 1; background: #b9a17a; }
+        .manual-heading::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, var(--magenta), transparent); }
         .action-gallery {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -106,29 +138,29 @@
             min-width: 0;
             margin: 0;
             padding: .35rem;
-            background: #e4d1aa;
-            border: 1px solid #9a7950;
-            box-shadow: 2px 3px 0 rgba(72, 45, 27, .16);
-            transform: rotate(-.5deg);
+            background: #111827;
+            border: 1px solid rgba(0, 229, 255, .55);
+            box-shadow: 0 0 12px rgba(0, 229, 255, .1), 3px 3px 0 rgba(255, 54, 183, .3);
+            transition: transform .2s, box-shadow .2s;
         }
-        .action-shot:nth-child(even) { transform: rotate(.6deg); }
+        .action-shot:hover { transform: translateY(-3px); box-shadow: 0 0 18px rgba(0, 229, 255, .24), 3px 3px 0 rgba(255, 54, 183, .5); }
         .action-shot img {
             display: block;
             width: 100%;
             aspect-ratio: 16 / 10;
             object-fit: cover;
-            background: #c8b58c;
-            border: 1px solid rgba(72, 45, 27, .22);
+            background: #202c41;
+            border: 1px solid rgba(255, 54, 183, .28);
         }
         .action-shot figcaption {
-            padding: .4rem .2rem .15rem;
-            color: #594832;
+            padding: .45rem .2rem .15rem;
+            color: var(--muted);
             font-size: .78rem;
             line-height: 1.3;
             text-align: center;
         }
-        .action-shot figcaption strong { display: block; color: #392818; font-size: .82rem; }
-        footer { color: var(--muted); font: .85rem Arial, sans-serif; margin-top: 2rem; }
+        .action-shot figcaption strong { display: block; color: var(--cyan); font-size: .82rem; text-transform: uppercase; }
+        footer { color: var(--muted); font-size: .85rem; margin-top: 2rem; }
         @media (max-width: 420px) {
             body { padding: 2rem .85rem; }
             .game-card { padding: 1.1rem; }
