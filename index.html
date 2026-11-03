@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portal de Juegos Unity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 2rem;
+        }
+        .game-card {
+            background-color: #2a2a2a;
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .btn-play {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .btn-play:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Portal de Juegos WebGL</h1>
+    <div class="game-card">
+        <h2>Juego N° 1</h2>
+        <p>Haz clic para iniciar el juego.</p>
+        <a href="juegos/juegos1/index.html" class="btn-play">Jugar Ahora</a>
+    </div>
+</body>
+</html>
