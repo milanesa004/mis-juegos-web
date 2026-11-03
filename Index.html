@@ -1,13 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=./index.html">
-  <link rel="canonical" href="./index.html">
-  <title>Redirigiendo al portal de juegos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal de juegos web: juega Semáforo y Cyber Runner: Última Carrera.">
+    <meta name="theme-color" content="#101522">
+    <title>Portal de Juegos WebGL</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --background: #101522;
+            --surface: #192235;
+            --surface-light: #202c41;
+            --text: #d8e5f2;
+            --muted: #a9b8cb;
+            --cyan: #00e5ff;
+            --magenta: #ff36b7;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: radial-gradient(ellipse at top, #1d2b45 0%, var(--background) 65%);
+            color: var(--text);
+            min-height: 100vh;
+            margin: 0;
+            padding: 3rem 1.25rem;
+        }
+        main { width: min(1050px, 100%); margin: 0 auto; }
+        .eyebrow {
+            color: var(--cyan);
+            font-size: .8rem;
+            font-weight: bold;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+        h1 { margin: .6rem 0 .75rem; font-size: clamp(2rem, 5vw, 3.25rem); }
+        .intro { color: var(--muted); line-height: 1.7; max-width: 680px; margin-bottom: 2rem; }
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+            gap: 1.25rem;
+        }
+        .game-card {
+            background: linear-gradient(145deg, var(--surface-light), var(--surface));
+            border: 1px solid #34445e;
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .24);
+            display: flex;
+            flex-direction: column;
+        }
+        .game-card.cyber { border-color: rgba(0, 229, 255, .45); }
+        .tag { color: var(--muted); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; }
+        h2 { margin: .65rem 0; color: #fff; }
+        .game-card.cyber h2 { color: var(--cyan); }
+        .game-card p { color: var(--muted); line-height: 1.65; margin: .45rem 0; }
+        .details { margin: .75rem 0 1.25rem; padding-left: 1.2rem; color: var(--text); line-height: 1.7; }
+        .details strong { color: #fff; }
+        .btn-play {
+            display: inline-block;
+            align-self: flex-start;
+            margin-top: auto;
+            padding: .8rem 1.15rem;
+            background: var(--cyan);
+            color: #101522;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: transform .2s, filter .2s;
+        }
+        .btn-play:hover, .btn-play:focus-visible { transform: translateY(-2px); filter: brightness(1.12); }
+        .game-card:first-child .btn-play { background: #4caf50; color: white; }
+        .credits { border-top: 1px solid #34445e; padding-top: 1rem; margin-top: .5rem !important; font-size: .9rem; }
+        footer { color: var(--muted); font-size: .85rem; margin-top: 2rem; }
+    </style>
 </head>
 <body>
-  <p>Redirigiendo al <a href="./index.html">portal de juegos</a>…</p>
+    <main>
+        <p class="eyebrow">Juegos para jugar en la web</p>
+        <h1>Portal de Juegos WebGL</h1>
+        <p class="intro">Elige un juego para conocer su propuesta y comenzar a jugar. ¡Que te diviertas!</p>
+
+        <section class="games" aria-label="Juegos disponibles">
+            <article class="game-card">
+                <span class="tag">Juego 1</span>
+                <h2>Semáforo</h2>
+                <p>Un juego web creado con Unity. Entra y descubre el desafío de esta primera entrega.</p>
+                <a href="juegos/juegos1/index.html" class="btn-play">Jugar Semáforo</a>
+            </article>
+
+            <article class="game-card cyber">
+                <span class="tag">Game Development · Unidad 2 · Evaluación</span>
+                <h2>Cyber Runner: Última Carrera</h2>
+                <p><strong>Corre para escapar de Neo-Cyber.</strong> El sistema de seguridad se ha descontrolado y persigue a NEX-01, un robot que debe alcanzar la estación de escape atravesando una autopista futurista.</p>
+                <p>En este endless runner 3D de estilo Low Poly, las barreras eléctricas, drones y brazos mecánicos pondrán a prueba tus reflejos. La velocidad aumenta con el tiempo: sobrevive, suma puntos y supera tu récord.</p>
+                <ul class="details">
+                    <li><strong>Salta:</strong> usa la flecha ↑ para evitar obstáculos bajos.</li>
+                    <li><strong>Agáchate:</strong> usa la flecha ↓ para esquivar obstáculos altos.</li>
+                    <li><strong>Objetivo:</strong> conserva tus tres vidas, alcanza 1.000 puntos y llega a la estación de escape.</li>
+                    <li><strong>Ambientación:</strong> megaciudad de neón en cian y magenta.</li>
+                </ul>
+                <p class="credits">Diseño de juego: Jorge Robledo Rojas, Paul Chipana y Marco Guzman.</p>
+                <a href="juegos/juegos2/index.html" class="btn-play">Jugar Cyber Runner</a>
+            </article>
+        </section>
+        <footer>Selecciona un juego para abrirlo en el reproductor de Unity.</footer>
+    </main>
 </body>
 </html>
